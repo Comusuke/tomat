@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>AgriPulse IoT</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-surface-variant": "#475569",
+        "on-tertiary": "#ffffff",
+        "on-error": "#ffffff",
+        "surface-container-low": "#f8fafc",
+        "on-primary-fixed": "#002114",
+        "on-primary-fixed-variant": "#005137",
+        "surface-container-high": "#e2e8f0",
+        "on-tertiary-fixed-variant": "#004b73",
+        "on-background": "#0f172a",
+        "on-secondary-fixed-variant": "#005236",
+        "surface-bright": "#ffffff",
+        "primary": "#059669",
+        "tertiary-fixed-dim": "#93ccff",
+        "outline": "#cbd5e1",
+        "secondary-container": "#ccfbf1",
+        "secondary-fixed": "#6ffbbe",
+        "error-container": "#fee2e2",
+        "on-secondary-container": "#0f766e",
+        "primary-fixed-dim": "#68dba9",
+        "surface-container": "#f1f5f9",
+        "surface-variant": "#e2e8f0",
+        "on-tertiary-fixed": "#001d31",
+        "on-surface": "#0f172a",
+        "on-primary": "#ffffff",
+        "outline-variant": "#e2e8f0",
+        "tertiary": "#d97706",
+        "on-secondary": "#ffffff",
+        "tertiary-container": "#fef3c7",
+        "primary-container": "#d1fae5",
+        "surface-tint": "#059669",
+        "surface-container-highest": "#cbd5e1",
+        "on-tertiary-container": "#92400e",
+        "secondary-fixed-dim": "#4edea3",
+        "surface-dim": "#e2e8f0",
+        "on-secondary-fixed": "#002113",
+        "on-primary-container": "#065f46",
+        "on-error-container": "#991b1b",
+        "inverse-primary": "#68dba9",
+        "primary-fixed": "#85f8c4",
+        "secondary": "#0284c7",
+        "surface-container-lowest": "#ffffff",
+        "surface": "#ffffff",
+        "error": "#dc2626",
+        "tertiary-fixed": "#cce5ff",
+        "background": "#f8fafc",
+        "inverse-surface": "#1e293b",
+        "inverse-on-surface": "#f8fafc"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "space-sm": "0.5rem",
+        "space-lg": "1.5rem",
+        "margin-desktop": "2rem",
+        "space-xl": "2.5rem",
+        "space-xs": "0.25rem",
+        "space-md": "1rem",
+        "margin": "1rem",
+        "gutter-desktop": "1.5rem",
+        "gutter": "1rem"
+      },
+      "fontFamily": {
+        "body-lg": ["Hanken Grotesk"],
+        "label-numeric-md": ["JetBrains Mono"],
+        "body-md": ["Hanken Grotesk"],
+        "body-sm": ["Hanken Grotesk"],
+        "headline-xl-mobile": ["Space Grotesk"],
+        "display-lg-mobile": ["Space Grotesk"],
+        "headline-md": ["Space Grotesk"],
+        "label-code-sm": ["JetBrains Mono"],
+        "label-numeric-lg": ["JetBrains Mono"],
+        "headline-sm": ["Space Grotesk"],
+        "headline-xl": ["Space Grotesk"],
+        "display-lg": ["Space Grotesk"]
+      },
+      "fontSize": {
+        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+        "label-numeric-md": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+        "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+        "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+        "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+        "label-code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "500" }],
+        "label-numeric-lg": ["28px", { "lineHeight": "32px", "fontWeight": "600" }],
+        "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+        "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "600" }],
+        "display-lg": ["48px", { "lineHeight": "56px", "fontWeight": "700" }]
+      }
+    }
+  }
+};</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-surface z-50 flex flex-col justify-between border-r border-outline-variant shadow-sm"><div class="flex flex-col"><div class="h-20 flex items-center gap-space-sm px-space-lg border-b border-outline-variant"><img alt="AgriPulse IoT Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WgZEvFojd52DgF3DUMJEyXdE34QESyJjlb6uSjfsmyN2mr0hfKF8arlIdPKYa0ZSzA59inGeQbJSZyDa_Tm-jlh_pC3VS74eG6cUtVy4qCgvGTfvBIz75dEt70B2_rsUpqpAYnfMEgY2HIiPITI1cLzNV2cFfZQ1-PZ-EAQjJEZqR4sW9WuZama50ERFsrI34wSgoKBv3GFtBt4wVsYR9AiadW2tX2P7Bop-VwlfJt"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">AgriPulse</span><span class="font-label-code-sm text-label-code-sm text-primary font-semibold tracking-widest uppercase">IoT Telemetry</span></div></div><div class="px-space-md py-space-sm"><div class="bg-surface-container-low p-space-sm rounded-lg border border-outline-variant mb-space-sm"><div class="flex items-center justify-between"><span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase font-medium">Mode Irigasi</span><span class="font-label-code-sm text-label-code-sm text-primary font-semibold">OTOMATIS</span></div><div class="mt-space-xs flex items-center justify-between"><span class="font-body-sm text-body-sm text-on-surface-variant">Solenoid Valve Auto</span><button class="w-9 h-5 bg-primary/20 rounded-full relative p-0.5 flex items-center transition-colors focus:outline-none ring-1 ring-primary/40" type="button"><span class="w-4 h-4 bg-primary rounded-full shadow transform translate-x-4 transition-transform"></span></button></div></div><div class="text-on-surface-variant font-label-code-sm text-label-code-sm uppercase tracking-wider px-space-sm py-space-xs font-semibold">Navigasi Sistem</div></div><nav class="flex flex-col gap-1 px-space-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard-pemantauan" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Dashboard Pemantauan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="kendali-pompa" href="#"><span class="material-symbols-outlined text-[20px]">water_pump</span><span class="font-body-md text-body-md">Kendali Pompa</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="log-sensor-supabase" href="#"><span class="material-symbols-outlined text-[20px]">database</span><span class="font-body-md text-body-md">Log Sensor &amp; Supabase</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary-container border-l-4 border-primary font-semibold shadow-xs" data-path="konfigurasi-ambang-batas" href="#"><span class="material-symbols-outlined text-[20px] text-primary">tune</span><span class="font-body-md text-body-md font-semibold text-on-primary-container">Konfigurasi Ambang Batas</span></a></nav></div><div class="p-space-md border-t border-outline-variant bg-surface-container-low"><div class="flex items-center justify-between text-on-surface-variant font-label-code-sm text-label-code-sm"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>Supabase Edge</span><span class="font-label-numeric-md text-label-code-sm text-on-surface font-semibold">18ms</span></div><div class="mt-space-xs text-[10px] text-on-surface-variant font-label-code-sm">v2.4.19-prod • Zone West Java</div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/90 backdrop-blur-md z-40 border-b border-outline-variant px-space-lg flex items-center justify-between shadow-xs"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-primary animate-ping"></span><span class="w-2 h-2 rounded-full bg-primary -ml-3.5"></span><span class="font-label-code-sm text-label-code-sm text-on-surface font-medium">Supabase: Terhubung (Realtime)</span></div><div class="hidden md:flex items-center gap-2 text-on-surface-variant font-label-code-sm text-label-code-sm"><span class="material-symbols-outlined text-[16px] text-secondary">sync</span><span>Sinkron: Baru saja</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs bg-surface-container p-1 rounded-lg border border-outline-variant"><button class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white shadow-xs font-label-code-sm" type="button">AUTO</button><button class="px-2.5 py-1 text-xs font-semibold rounded text-on-surface-variant hover:text-on-surface font-label-code-sm transition-colors" type="button">MANUAL</button></div><button class="relative p-2 rounded-lg bg-surface border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors shadow-xs" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-tertiary rounded-full"></span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-outline-variant"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBByca6GKFBkOsNw5zVOe3i2CiVTbSZOBWBkVSaD_spfQILozLIvnsmsFHbl7ECYH5ydloYLATgJ-TSzbmjxGMkLNtPDaR6mqOcdybPNGHc7Joe-9maw6VzkWa2i7OlEHsAU6U-UUoFaYpvah4l8VBTrR_4BDkxIfbKcOtUSqXw6BjvXw4Hxp2eCjYRMtC42_76ZOaU-JFEd201NIKACCZVkAjVU6MgvNDB98hDPQ"/><div class="hidden xl:flex flex-col text-left"><span class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight">Agronomist Admin</span><span class="font-label-code-sm text-[10px] text-on-surface-variant leading-tight">Node Master #01</span></div></div></div></header><main class="relative w-full pt-20 px-gutter-desktop pb-space-xl bg-background min-h-screen"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Meta Banner / Operational Status -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface p-space-md rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[28px] text-primary" style="font-variation-settings: 'FILL' 1;">tune</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-code-sm text-label-code-sm text-primary uppercase font-bold tracking-wider">Parameter Node #01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Zone: West Java Sub-4</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight truncate font-bold">Ambang Batas &amp; Kalibrasi IoT</h1>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-xs bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface-variant font-label-code-sm text-label-code-sm shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">cloud_done</span>
+<span>Kanal Broadcast: <strong class="text-on-surface font-label-numeric-md">telemetry/node-01/setpoints</strong></span>
+</div>
+<button class="px-4 py-2 rounded-lg bg-surface border border-outline-variant hover:bg-surface-container text-on-surface font-label-code-sm text-label-code-sm transition-all duration-200 shadow-xs" id="btn-revert" type="button">
+        Reset Nilai Awal
+      </button>
+<button class="flex items-center gap-2 px-5 py-2 rounded-lg bg-primary text-white font-headline-sm text-body-md font-semibold hover:bg-primary/90 shadow-sm transition-all duration-200" id="btn-save-push" type="button">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+<span>Kirim &amp; Terapkan ke Node</span>
+</button>
+</div>
+</div>
+<!-- Notification Toast (Interactive) -->
+<div class="hidden flex items-center justify-between bg-primary-container text-on-primary-container px-space-md py-space-sm rounded-lg border border-primary/20 shadow-md transition-all" id="toast-banner">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">check_circle</span>
+<span class="font-body-md text-body-md font-semibold">Konfigurasi berhasil disimpan ke Supabase Database dan dipancarkan ke ESP32 Node via Realtime Broadcast.</span>
+</div>
+<button class="p-1 hover:bg-on-primary-container/10 rounded" id="toast-close">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- Left Column: Thresholds & Automation Rules (7 Cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-lg">
+<!-- Card 1: Soil Moisture Thresholds with Graphic Span Indicator -->
+<section class="bg-surface rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">water_drop</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Ambang Kelembapan Tanah (Solenoid Trigger)</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 font-semibold">Histeresis Otomatis</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Pompa dan solenoid valve akan aktif otomatis jika kelembapan berada di bawah batas minimum dan mati saat mencapai batas maksimum guna mencegah penggenangan air berlebih.
+        </p>
+<!-- Visual Bar Meter -->
+<div class="relative w-full h-8 bg-surface-container rounded-lg overflow-hidden flex my-space-xs border border-outline-variant">
+<!-- Dry Zone -->
+<div class="h-full bg-error/20 border-r border-error/30 flex items-center justify-center text-[10px] font-label-code-sm text-error font-bold uppercase tracking-tighter" id="zone-dry-bar" style="width: 35%;">
+            Kering (Aktifkan)
+          </div>
+<!-- Target Zone -->
+<div class="h-full bg-primary/20 border-r border-primary/30 flex items-center justify-center text-[10px] font-label-code-sm text-primary uppercase font-bold" id="zone-opt-bar" style="width: 35%;">
+            Zona Optimal
+          </div>
+<!-- Saturated Zone -->
+<div class="h-full bg-secondary/20 flex items-center justify-center text-[10px] font-label-code-sm text-secondary uppercase font-bold" id="zone-wet-bar" style="width: 30%;">
+            Jenuh (Matikan)
+          </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md mt-space-xs">
+<!-- Min Threshold Slider Box -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Batas Minimum (Pompa ON)</span>
+<div class="flex items-baseline gap-1">
+<input class="w-16 bg-surface border border-outline-variant text-right font-label-numeric-lg text-label-numeric-md text-primary font-bold px-2 py-1 rounded focus:outline-none focus:ring-1 focus:ring-primary shadow-xs" id="num-soil-min" max="60" min="10" type="number" value="35"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">%</span>
+</div>
+</div>
+<input class="w-full accent-primary cursor-pointer bg-outline-variant h-2 rounded-lg" id="range-soil-min" max="60" min="10" type="range" value="35"/>
+<div class="flex justify-between font-label-code-sm text-[10px] text-on-surface-variant font-medium">
+<span>Min: 10%</span>
+<span class="text-tertiary font-bold">Rekomendasi: 35%</span>
+<span>Max: 60%</span>
+</div>
+</div>
+<!-- Max Threshold Slider Box -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Batas Maksimum (Pompa OFF)</span>
+<div class="flex items-baseline gap-1">
+<input class="w-16 bg-surface border border-outline-variant text-right font-label-numeric-lg text-label-numeric-md text-secondary font-bold px-2 py-1 rounded focus:outline-none focus:ring-1 focus:ring-secondary shadow-xs" id="num-soil-max" max="95" min="50" type="number" value="70"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">%</span>
+</div>
+</div>
+<input class="w-full accent-secondary cursor-pointer bg-outline-variant h-2 rounded-lg" id="range-soil-max" max="95" min="50" type="range" value="70"/>
+<div class="flex justify-between font-label-code-sm text-[10px] text-on-surface-variant font-medium">
+<span>Min: 50%</span>
+<span class="text-secondary font-bold">Rekomendasi: 70%</span>
+<span>Max: 95%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 2: Microclimate Critical Setpoints (Temp & Air Humidity) -->
+<section class="bg-surface rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[22px]">thermostat</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Batas Iklim Mikro (Suhu &amp; Kelembapan Udara)</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-tertiary px-2 py-0.5 rounded bg-tertiary/10 border border-tertiary/20 font-semibold">Sensor SHT31 / DHT22</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Extreme Temperature Trigger -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col justify-between gap-space-sm">
+<div class="flex items-start justify-between">
+<div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">Peringatan Suhu Ekstrem</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Trigger proteksi kanopi dan misting</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">warning</span>
+</div>
+<div class="flex items-center justify-between mt-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Lebih dari</span>
+<span class="font-label-numeric-lg text-label-numeric-lg text-tertiary font-bold ml-1" id="temp-val-display">34.0</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-semibold">°C</span>
+</div>
+<div class="flex items-center gap-1 bg-surface border border-outline-variant p-1 rounded-lg shadow-xs">
+<button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-sm transition-colors" id="btn-temp-dec" type="button">-</button>
+<button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-sm transition-colors" id="btn-temp-inc" type="button">+</button>
+</div>
+</div>
+<input class="w-full accent-tertiary cursor-pointer bg-outline-variant h-2 rounded-lg" id="range-temp" max="42" min="28" step="0.5" type="range" value="34.0"/>
+</div>
+<!-- Air Relative Humidity (RH) Range Window -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col justify-between gap-space-sm">
+<div class="flex items-start justify-between">
+<div>
+<div class="font-body-md text-body-md font-semibold text-on-surface">Rentang Kelembapan Udara (RH)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Batas ambang aman transpirasi daun</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">cloud</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mt-space-sm">
+<div class="bg-surface border border-outline-variant p-2 rounded-lg flex flex-col shadow-xs">
+<span class="font-label-code-sm text-[10px] text-on-surface-variant uppercase font-medium">RH Terlalu Kering</span>
+<div class="flex items-baseline gap-1">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">&lt;</span>
+<input class="w-12 bg-transparent font-label-numeric-md text-label-numeric-md text-on-surface font-bold focus:outline-none" id="input-rh-low" type="number" value="45"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">%</span>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant p-2 rounded-lg flex flex-col shadow-xs">
+<span class="font-label-code-sm text-[10px] text-on-surface-variant uppercase font-medium">RH Terlalu Lembap</span>
+<div class="flex items-baseline gap-1">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">&gt;</span>
+<input class="w-12 bg-transparent font-label-numeric-md text-label-numeric-md text-on-surface font-bold focus:outline-none" id="input-rh-high" type="number" value="85"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">%</span>
+</div>
+</div>
+</div>
+<div class="font-label-code-sm text-[10px] text-on-surface-variant font-medium">Status normal: 45% s/d 85% RH (VPD Optimal)</div>
+</div>
+</div>
+</section>
+<!-- Card 3: Alert Rules & Notification Integrations -->
+<section class="bg-surface rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">notifications_active</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Aturan Peringatan Dini &amp; Integrasi Alert</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary px-2.5 py-0.5 rounded-full bg-primary-container border border-primary/30 font-semibold">3 Kanal Aktif</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Notification Rule 1: Pump Run Overtime -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-tertiary mt-0.5">timer_off</span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Proteksi Pompa Berjalan Berlebih (Dry-Run / Pipa Bocor)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Kirim peringatan jika pompa beroperasi aktif terus-menerus melebihi batas waktu</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 self-end sm:self-center">
+<div class="flex items-center bg-surface border border-outline-variant px-2 py-1 rounded shadow-xs">
+<input class="w-12 text-center bg-transparent font-label-numeric-md text-label-numeric-md text-tertiary font-bold focus:outline-none" type="number" value="15"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant ml-1 font-medium">Menit</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary shadow-xs"></div>
+</label>
+</div>
+</div>
+<!-- Notification Rule 2: Heartbeat Offline Alert -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error mt-0.5">wifi_off</span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Peringatan Node Sensor Terputus (Heartbeat Timeout)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pemberitahuan darurat bila tidak ada log masuk ke Supabase dalam durasi tertentu</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 self-end sm:self-center">
+<div class="flex items-center bg-surface border border-outline-variant px-2 py-1 rounded shadow-xs">
+<input class="w-10 text-center bg-transparent font-label-numeric-md text-label-numeric-md text-error font-bold focus:outline-none" type="number" value="3"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant ml-1 font-medium">Menit</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary shadow-xs"></div>
+</label>
+</div>
+</div>
+<!-- Channel Selection Toggles -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm mt-space-xs">
+<label class="flex items-center justify-between bg-surface-container-low border border-outline-variant p-space-sm rounded-lg cursor-pointer hover:bg-surface-container transition-colors shadow-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">send</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Telegram Bot</span>
+</div>
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between bg-surface-container-low border border-outline-variant p-space-sm rounded-lg cursor-pointer hover:bg-surface-container transition-colors shadow-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">chat</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">WhatsApp API</span>
+</div>
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between bg-surface-container-low border border-outline-variant p-space-sm rounded-lg cursor-pointer hover:bg-surface-container transition-colors shadow-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">webhook</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Edge Webhook</span>
+</div>
+<input class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Calibration & Supabase Realtime Sync (5 Cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Card 4: Hardware Calibration (ADC Impedance & Trimming) -->
+<section class="bg-surface rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">hardware</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Kalibrasi Raw Sensor (ADC)</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">ESP32 12-bit ADC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Penyetelan kurva kapasitif tanah berdasarkan pembacaan tegangan resistif di udara terbuka versus perendaman air penuh.
+        </p>
+<!-- Soil Moisture ADC Calibration -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Sensor Kelembapan Kapasitif V1.2</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary bg-secondary-container px-2 py-0.5 rounded font-semibold border border-secondary/20">ADC GPIO34</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm mt-space-xs">
+<!-- Dry Air Point -->
+<div class="bg-surface border border-outline-variant p-space-sm rounded-lg flex flex-col gap-1 shadow-xs">
+<span class="font-label-code-sm text-[10px] text-tertiary uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>Udara Kering (0%)
+              </span>
+<div class="flex items-baseline justify-between">
+<input class="w-full bg-transparent font-label-numeric-lg text-label-numeric-md text-on-surface font-bold focus:outline-none" id="adc-dry" type="number" value="3200"/>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant font-medium">ADC</span>
+</div>
+<button class="mt-1 text-left font-label-code-sm text-[10px] text-secondary hover:underline flex items-center gap-1 font-semibold" onclick="sampleCurrentADC('dry')" type="button">
+<span class="material-symbols-outlined text-[12px]">colorize</span> Sampler Saat Ini
+              </button>
+</div>
+<!-- Full Water Point -->
+<div class="bg-surface border border-outline-variant p-space-sm rounded-lg flex flex-col gap-1 shadow-xs">
+<span class="font-label-code-sm text-[10px] text-secondary uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Air Penuh (100%)
+              </span>
+<div class="flex items-baseline justify-between">
+<input class="w-full bg-transparent font-label-numeric-lg text-label-numeric-md text-on-surface font-bold focus:outline-none" id="adc-wet" type="number" value="1450"/>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant font-medium">ADC</span>
+</div>
+<button class="mt-1 text-left font-label-code-sm text-[10px] text-secondary hover:underline flex items-center gap-1 font-semibold" onclick="sampleCurrentADC('wet')" type="button">
+<span class="material-symbols-outlined text-[12px]">colorize</span> Sampler Saat Ini
+              </button>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-code-sm text-[11px] pt-1 border-t border-outline-variant">
+<span>Resolusi Formula: Map(Val, 3200, 1450, 0, 100)</span>
+<span class="text-primary font-bold">Valid</span>
+</div>
+</div>
+<!-- Trimming Offsets (Temp & Humidity) -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col gap-space-sm">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Koreksi Offset Presisi (Trimming)</span>
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Offset Suhu Ruang</span>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant">Kalibrasi termometer acuan</span>
+</div>
+<div class="flex items-center bg-surface border border-outline-variant px-2 py-1 rounded shadow-xs">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant mr-1">±</span>
+<input class="w-14 text-right bg-transparent font-label-numeric-md text-label-numeric-md text-primary font-bold focus:outline-none" step="0.1" type="number" value="-0.4"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface ml-1 font-semibold">°C</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-2 border-t border-outline-variant/60">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Offset Kelembapan Udara (RH)</span>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant">Koreksi hygrometer acuan</span>
+</div>
+<div class="flex items-center bg-surface border border-outline-variant px-2 py-1 rounded shadow-xs">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant mr-1">±</span>
+<input class="w-14 text-right bg-transparent font-label-numeric-md text-label-numeric-md text-secondary font-bold focus:outline-none" step="0.5" type="number" value="+1.5"/>
+<span class="font-label-code-sm text-label-code-sm text-on-surface ml-1 font-semibold">%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Card 5: Supabase Telemetry Sync & Broadcast Interval -->
+<section class="bg-surface rounded-xl p-space-lg border border-outline-variant shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">database</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Sinkronisasi Supabase Realtime</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-primary-container text-on-primary-container border border-primary/20 px-2 py-0.5 rounded font-semibold">PostgreSQL Engine</span>
+</div>
+<!-- Sync Interval Selector -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-body-sm text-body-sm text-on-surface-variant font-medium">Frekuensi Pengiriman Log Sensor (ESP32 Push)</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="btn-interval py-2 px-1 text-center rounded-lg bg-surface border border-outline-variant hover:bg-surface-container font-label-code-sm text-label-code-sm text-on-surface font-medium shadow-xs transition-colors" data-interval="5" type="button">5 Detik</button>
+<button class="btn-interval py-2 px-1 text-center rounded-lg bg-primary text-white font-label-code-sm text-label-code-sm font-semibold shadow-xs transition-colors" data-interval="10" type="button">10 Detik</button>
+<button class="btn-interval py-2 px-1 text-center rounded-lg bg-surface border border-outline-variant hover:bg-surface-container font-label-code-sm text-label-code-sm text-on-surface font-medium shadow-xs transition-colors" data-interval="30" type="button">30 Detik</button>
+<button class="btn-interval py-2 px-1 text-center rounded-lg bg-surface border border-outline-variant hover:bg-surface-container font-label-code-sm text-label-code-sm text-on-surface font-medium shadow-xs transition-colors" data-interval="60" type="button">60 Detik</button>
+</div>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant mt-1">Mode adaptif: Kecepatan otomatis beralih ke 5s saat pompa aktif.</span>
+</div>
+<!-- Realtime Channel Diagnostics Preview -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-code-sm text-label-code-sm">
+<span class="text-on-surface-variant font-medium flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Payload JSON Broadcast
+            </span>
+<span class="text-secondary font-semibold">channel: config_sync</span>
+</div>
+<pre class="bg-surface border border-outline-variant p-2.5 rounded-lg font-label-code-sm text-[11px] text-on-surface overflow-x-auto leading-tight selection:bg-surface-container shadow-xs"><code>{
+  <span class="text-secondary">"node_id"</span>: <span class="text-primary">"esp32-greenhouse-01"</span>,
+  <span class="text-secondary">"soil_min"</span>: <span class="text-tertiary">35</span>,
+  <span class="text-secondary">"soil_max"</span>: <span class="text-tertiary">70</span>,
+  <span class="text-secondary">"temp_limit"</span>: <span class="text-tertiary">34.0</span>,
+  <span class="text-secondary">"adc_dry"</span>: <span class="text-tertiary">3200</span>,
+  <span class="text-secondary">"adc_wet"</span>: <span class="text-tertiary">1450</span>,
+  <span class="text-secondary">"sync_interval_s"</span>: <span class="text-tertiary">10</span>,
+  <span class="text-secondary">"broadcast_epoch"</span>: <span class="text-on-surface-variant">1729088451</span>
+}</code></pre>
+</div>
+<!-- Field Visual Confirmation -->
+<div class="flex items-center gap-space-sm p-space-sm bg-surface-container-low border border-outline-variant rounded-lg">
+<img class="w-14 h-14 rounded-lg object-cover shrink-0 border border-outline-variant" data-alt="Close-up macro of an industrial smart agriculture IoT sensor node with an ESP32 microcontroller, digital display, waterproof cable glands, and copper capacitive moisture probes embedded in moist dark organic greenhouse soil with cinematic green and cyan backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFqNUsTTRvE5mVQX_bvm3nUbXT8qUb-IVOwkkbp_8y08jBIWDg43-obXfJZn0qEU9s6OnzWDWmjRzIXK4zzX6-K72ukFHMgvKGGyX4fdpc1m1qb3VRWzwXP51jUfYzqKy9dHZXSgJNKncWFlUP6PtK8ikHd93WQCRZM9kYBnlIimDWODPauUrCkYJgjENSLyt_cfFU97q7u9x2xayvN3BvEzq_zw0lqxNyEvfPI_A"/>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface truncate">Node Hardware: ESP32-WROOM-32D</span>
+<span class="font-label-code-sm text-[11px] text-on-surface-variant truncate">Firmware 3.2.0-OTA • Signal: -62 dBm (Sangat Baik)</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Realtime Telemetry Activity Logs (Footer Context) -->
+<section class="bg-surface rounded-xl p-space-md border border-outline-variant shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">history_edu</span>
+<span class="font-headline-sm text-body-md font-semibold text-on-surface">Riwayat Perubahan Setpoints Terakhir</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Tabel Supabase: <strong class="text-on-surface">threshold_audit_log</strong></span>
+</div>
+<div class="overflow-x-auto rounded-lg border border-outline-variant">
+<table class="w-full text-left font-body-sm text-body-sm bg-surface">
+<thead>
+<tr class="text-on-surface-variant bg-surface-container font-label-code-sm text-[11px] uppercase border-b border-outline-variant">
+<th class="py-2.5 px-3">Waktu (WIB)</th>
+<th class="py-2.5 px-3">Operator</th>
+<th class="py-2.5 px-3">Variabel</th>
+<th class="py-2.5 px-3">Sebelum</th>
+<th class="py-2.5 px-3">Nilai Baru</th>
+<th class="py-2.5 px-3 text-right">Status Propagasi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-on-surface">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-on-surface-variant">Hari ini, 14:22:08</td>
+<td class="py-2.5 px-3 font-medium text-on-surface">Agronomist Admin</td>
+<td class="py-2.5 px-3 font-label-code-sm text-label-code-sm text-secondary font-semibold">soil_threshold_min</td>
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-on-surface-variant">30%</td>
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-primary font-bold">35%</td>
+<td class="py-2.5 px-3 text-right"><span class="inline-flex items-center gap-1 font-label-code-sm text-[11px] text-primary font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Dikonfirmasi ACK Node</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-on-surface-variant">Kemarin, 09:15:30</td>
+<td class="py-2.5 px-3 font-medium text-on-surface">Auto-VPD Optimizer</td>
+<td class="py-2.5 px-3 font-label-code-sm text-label-code-sm text-tertiary font-semibold">temp_limit</td>
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-on-surface-variant">35.0°C</td>
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-primary font-bold">34.0°C</td>
+<td class="py-2.5 px-3 text-right"><span class="inline-flex items-center gap-1 font-label-code-sm text-[11px] text-primary font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Dikonfirmasi ACK Node</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-on-surface-variant">12 Okt 2024, 18:04:12</td>
+<td class="py-2.5 px-3 font-medium text-on-surface">IoT Tech Node #01</td>
+<td class="py-2.5 px-3 font-label-code-sm text-label-code-sm text-secondary font-semibold">adc_calibration_air</td>
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-on-surface-variant">1520 ADC</td>
+<td class="py-2.5 px-3 font-label-numeric-md text-label-code-sm text-primary font-bold">1450 ADC</td>
+<td class="py-2.5 px-3 text-right"><span class="inline-flex items-center gap-1 font-label-code-sm text-[11px] text-primary font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Dikonfirmasi ACK Node</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<script>
+  (function initThresholdController() {
+    const rangeSoilMin = document.getElementById('range-soil-min');
+    const numSoilMin = document.getElementById('num-soil-min');
+    const rangeSoilMax = document.getElementById('range-soil-max');
+    const numSoilMax = document.getElementById('num-soil-max');
+    
+    const zoneDry = document.getElementById('zone-dry-bar');
+    const zoneOpt = document.getElementById('zone-opt-bar');
+    const zoneWet = document.getElementById('zone-wet-bar');
+
+    function updateSoilGraphic() {
+      const minVal = parseInt(rangeSoilMin.value, 10);
+      const maxVal = parseInt(rangeSoilMax.value, 10);
+
+      numSoilMin.value = minVal;
+      numSoilMax.value = maxVal;
+
+      const dryWidth = Math.max(0, minVal);
+      const optWidth = Math.max(0, maxVal - minVal);
+      const wetWidth = Math.max(0, 100 - maxVal);
+
+      zoneDry.style.width = dryWidth + '%';
+      zoneOpt.style.width = optWidth + '%';
+      zoneWet.style.width = wetWidth + '%';
+    }
+
+    if (rangeSoilMin && numSoilMin && rangeSoilMax && numSoilMax) {
+      rangeSoilMin.addEventListener('input', (e) => {
+        if (parseInt(e.target.value, 10) >= parseInt(rangeSoilMax.value, 10)) {
+          rangeSoilMax.value = parseInt(e.target.value, 10) + 5;
+        }
+        updateSoilGraphic();
+      });
+
+      rangeSoilMax.addEventListener('input', (e) => {
+        if (parseInt(e.target.value, 10) <= parseInt(rangeSoilMin.value, 10)) {
+          rangeSoilMin.value = parseInt(e.target.value, 10) - 5;
+        }
+        updateSoilGraphic();
+      });
+
+      numSoilMin.addEventListener('change', (e) => {
+        rangeSoilMin.value = e.target.value;
+        updateSoilGraphic();
+      });
+
+      numSoilMax.addEventListener('change', (e) => {
+        rangeSoilMax.value = e.target.value;
+        updateSoilGraphic();
+      });
+    }
+
+    // Temperature stepper controls
+    const tempRange = document.getElementById('range-temp');
+    const tempDisplay = document.getElementById('temp-val-display');
+    const btnTempInc = document.getElementById('btn-temp-inc');
+    const btnTempDec = document.getElementById('btn-temp-dec');
+
+    if (tempRange && tempDisplay) {
+      tempRange.addEventListener('input', (e) => {
+        tempDisplay.textContent = parseFloat(e.target.value).toFixed(1);
+      });
+      if (btnTempInc) {
+        btnTempInc.addEventListener('click', () => {
+          let cur = parseFloat(tempRange.value);
+          if (cur < 42) {
+            tempRange.value = (cur + 0.5).toFixed(1);
+            tempDisplay.textContent = tempRange.value;
+          }
+        });
+      }
+      if (btnTempDec) {
+        btnTempDec.addEventListener('click', () => {
+          let cur = parseFloat(tempRange.value);
+          if (cur > 28) {
+            tempRange.value = (cur - 0.5).toFixed(1);
+            tempDisplay.textContent = tempRange.value;
+          }
+        });
+      }
+    }
+
+    // Interval selection buttons
+    const intervalButtons = document.querySelectorAll('.btn-interval');
+    intervalButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        intervalButtons.forEach(b => {
+          b.className = 'btn-interval py-2 px-1 text-center rounded-lg bg-surface border border-outline-variant hover:bg-surface-container font-label-code-sm text-label-code-sm text-on-surface font-medium shadow-xs transition-colors';
+        });
+        btn.className = 'btn-interval py-2 px-1 text-center rounded-lg bg-primary text-white font-label-code-sm text-label-code-sm font-semibold shadow-xs transition-colors';
+      });
+    });
+
+    // Toast and save simulation
+    const saveBtn = document.getElementById('btn-save-push');
+    const toast = document.getElementById('toast-banner');
+    const toastClose = document.getElementById('toast-close');
+    const revertBtn = document.getElementById('btn-revert');
+
+    if (saveBtn && toast) {
+      saveBtn.addEventListener('click', () => {
+        toast.classList.remove('hidden');
+        saveBtn.classList.add('opacity-80');
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>Memancarkan ke ESP32...</span>';
+        setTimeout(() => {
+          saveBtn.classList.remove('opacity-80');
+          saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done_all</span><span>Tersinkronisasi</span>';
+          setTimeout(() => {
+            saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">publish</span><span>Kirim & Terapkan ke Node</span>';
+          }, 2500);
+        }, 800);
+      });
+    }
+
+    if (toastClose && toast) {
+      toastClose.addEventListener('click', () => {
+        toast.classList.add('hidden');
+      });
+    }
+
+    if (revertBtn) {
+      revertBtn.addEventListener('click', () => {
+        if (rangeSoilMin) rangeSoilMin.value = 35;
+        if (rangeSoilMax) rangeSoilMax.value = 70;
+        if (tempRange) {
+          tempRange.value = 34.0;
+          if (tempDisplay) tempDisplay.textContent = '34.0';
+        }
+        updateSoilGraphic();
+      });
+    }
+
+    window.sampleCurrentADC = function(type) {
+      if (type === 'dry') {
+        const el = document.getElementById('adc-dry');
+        if (el) el.value = Math.floor(3180 + Math.random() * 30);
+      } else {
+        const el = document.getElementById('adc-wet');
+        if (el) el.value = Math.floor(1440 + Math.random() * 20);
+      }
+    };
+  })();
+</script></main></div></body></html>

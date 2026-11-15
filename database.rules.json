@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "telemetry": {
+      "$device_id": {
+        ".read": "auth != null",
+        "$record_id": {
+          ".write": "auth != null",
+          ".validate": "newData.hasChildren(['device_id', 'adc', 'pompa'])"
+        }
+      }
+    },
+    "pump_events": {
+      "$device_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "commands": {
+      "$device_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}

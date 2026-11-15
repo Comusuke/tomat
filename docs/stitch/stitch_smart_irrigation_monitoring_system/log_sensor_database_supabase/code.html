@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>AgriPulse IoT</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface-variant": "#3d4a42", "on-tertiary": "#ffffff", "on-error": "#ffffff", "surface-container-low": "#f2f3ff", "on-primary-fixed": "#002114", "on-primary-fixed-variant": "#005137", "surface-container-high": "#e2e7ff", "on-tertiary-fixed-variant": "#004b73", "on-background": "#131b2e", "on-secondary-fixed-variant": "#005236", "surface-bright": "#faf8ff", "primary": "#006948", "tertiary-fixed-dim": "#93ccff", "outline": "#6d7a72", "secondary-container": "#6cf8bb", "secondary-fixed": "#6ffbbe", "error-container": "#ffdad6", "on-secondary-container": "#00714d", "primary-fixed-dim": "#68dba9", "surface-container": "#eaedff", "surface-variant": "#dae2fd", "on-tertiary-fixed": "#001d31", "on-surface": "#131b2e", "on-primary": "#ffffff", "outline-variant": "#bccac0", "tertiary": "#006194", "on-secondary": "#ffffff", "tertiary-container": "#007bb9", "primary-container": "#00855d", "surface-tint": "#006c4a", "surface-container-highest": "#dae2fd", "on-tertiary-container": "#fdfcff", "secondary-fixed-dim": "#4edea3", "surface-dim": "#d2d9f4", "on-secondary-fixed": "#002113", "on-primary-container": "#f5fff7", "on-error-container": "#93000a", "inverse-primary": "#68dba9", "primary-fixed": "#85f8c4", "secondary": "#006c49", "surface-container-lowest": "#ffffff", "surface": "#faf8ff", "error": "#ba1a1a", "tertiary-fixed": "#cce5ff", "background": "#faf8ff", "inverse-surface": "#283044", "inverse-on-surface": "#eef0ff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-desktop": "2rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "space-md": "1rem", "margin": "1rem", "gutter-desktop": "1.5rem", "gutter": "1rem" }, "fontFamily": { "body-lg": ["Hanken Grotesk"], "label-numeric-md": ["JetBrains Mono"], "body-md": ["Hanken Grotesk"], "body-sm": ["Hanken Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "display-lg-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "label-code-sm": ["JetBrains Mono"], "label-numeric-lg": ["JetBrains Mono"], "headline-sm": ["Space Grotesk"], "headline-xl": ["Space Grotesk"], "display-lg": ["Space Grotesk"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-numeric-md": ["16px", { "lineHeight": "22px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }], "display-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "label-code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "500" }], "label-numeric-lg": ["28px", { "lineHeight": "32px", "fontWeight": "600" }], "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "600" }], "display-lg": ["48px", { "lineHeight": "56px", "fontWeight": "700" }] } } } };</script></head><body class="bg-slate-50 font-body-md text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900 min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-white z-50 flex flex-col justify-between border-r border-slate-200 shadow-sm"><div class="flex flex-col"><div class="h-20 flex items-center gap-space-sm px-space-lg border-b border-slate-200"><img alt="AgriPulse IoT Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WgZEvFojd52DgF3DUMJEyXdE34QESyJjlb6uSjfsmyN2mr0hfKF8arlIdPKYa0ZSzA59inGeQbJSZyDa_Tm-jlh_pC3VS74eG6cUtVy4qCgvGTfvBIz75dEt70B2_rsUpqpAYnfMEgY2HIiPITI1cLzNV2cFfZQ1-PZ-EAQjJEZqR4sW9WuZama50ERFsrI34wSgoKBv3GFtBt4wVsYR9AiadW2tX2P7Bop-VwlfJt"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-slate-900 tracking-tight leading-none">AgriPulse</span><span class="font-label-code-sm text-label-code-sm text-emerald-700 tracking-widest uppercase font-semibold">IoT Telemetry</span></div></div><div class="px-space-md py-space-sm"><div class="bg-slate-50 p-space-sm rounded-lg border border-slate-200 mb-space-sm"><div class="flex items-center justify-between"><span class="font-label-code-sm text-label-code-sm text-slate-500 uppercase font-medium">Mode Irigasi</span><span class="font-label-code-sm text-label-code-sm text-emerald-700 font-semibold">OTOMATIS</span></div><div class="mt-space-xs flex items-center justify-between"><span class="font-body-sm text-body-sm text-slate-600">Solenoid Valve Auto</span><button class="w-9 h-5 bg-emerald-600 rounded-full relative p-0.5 flex items-center transition-colors focus:outline-none ring-1 ring-emerald-500/30" type="button"><span class="w-4 h-4 bg-white rounded-full shadow transform translate-x-4 transition-transform"></span></button></div></div><div class="text-slate-400 font-label-code-sm text-label-code-sm uppercase tracking-wider px-space-sm py-space-xs font-semibold">Navigasi Sistem</div></div><nav class="flex flex-col gap-1 px-space-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="dashboard-pemantauan" href="#"><span class="material-symbols-outlined text-[20px] text-slate-500">grid_view</span><span class="font-body-md text-body-md font-medium">Dashboard Pemantauan</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="kendali-pompa" href="#"><span class="material-symbols-outlined text-[20px] text-slate-500">water_pump</span><span class="font-body-md text-body-md font-medium">Kendali Pompa</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-emerald-50 text-emerald-800 border-l-4 border-emerald-600 font-semibold shadow-xs" data-path="log-sensor-supabase" href="#"><span class="material-symbols-outlined text-[20px] text-emerald-700">database</span><span class="font-body-md text-body-md">Log Sensor &amp; Supabase</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors" data-path="konfigurasi-ambang-batas" href="#"><span class="material-symbols-outlined text-[20px] text-slate-500">tune</span><span class="font-body-md text-body-md font-medium">Konfigurasi Ambang Batas</span></a></nav></div><div class="p-space-md border-t border-slate-200 bg-slate-50"><div class="flex items-center justify-between text-slate-600 font-label-code-sm text-label-code-sm"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>Supabase Edge</span><span class="font-label-numeric-md text-label-code-sm text-slate-800 font-semibold">18ms</span></div><div class="mt-space-xs text-[10px] text-slate-400 font-label-code-sm">v2.4.19-prod • Zone West Java</div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-white/95 backdrop-blur-md z-40 border-b border-slate-200 px-space-lg flex items-center justify-between shadow-xs"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span><span class="w-2 h-2 rounded-full bg-emerald-600 -ml-3.5"></span><span class="font-label-code-sm text-label-code-sm text-emerald-900 font-semibold">Supabase: Terhubung (Realtime)</span></div><div class="hidden md:flex items-center gap-2 text-slate-500 font-label-code-sm text-label-code-sm"><span class="material-symbols-outlined text-[16px] text-cyan-600">sync</span><span>Sinkron: Baru saja</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs bg-slate-100 p-1 rounded-lg border border-slate-200"><button class="px-2.5 py-1 text-xs font-semibold rounded bg-emerald-600 text-white font-label-code-sm shadow-xs" type="button">AUTO</button><button class="px-2.5 py-1 text-xs font-semibold rounded text-slate-600 hover:text-slate-900 font-label-code-sm transition-colors" type="button">MANUAL</button></div><button class="relative p-2 rounded-lg bg-slate-100 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-200 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-amber-500 rounded-full"></span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-slate-200"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-emerald-500/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBByca6GKFBkOsNw5zVOe3i2CiVTbSZOBWBkVSaD_spfQILozLIvnsmsFHbl7ECYH5ydloYLATgJ-TSzbmjxGMkLNtPDaR6mqOcdybPNGHc7Joe-9maw6VzkWa2i7OlEHsAU6U-UUoFaYpvah4l8VBTrR_4BDkxIfbKcOtUSqXw6BjvXw4Hxp2eCjYRMtC42_76ZOaU-JFEd201NIKACCZVkAjVU6MgvNDB98hDPQ"/><div class="hidden xl:flex flex-col text-left"><span class="font-body-sm text-body-sm font-semibold text-slate-900 leading-tight">Agronomist Admin</span><span class="font-label-code-sm text-[10px] text-slate-500 leading-tight">Node Master #01</span></div></div></div></header><main class="relative w-full pt-20 px-gutter-desktop pb-space-xl bg-slate-50 min-h-screen"><div class="flex flex-col w-full gap-space-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-slate-500 font-label-code-sm text-label-code-sm uppercase tracking-wider">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-600 -ml-2.5"></span>
+<span>Penyimpanan Telemetri Terdistribusi</span>
+<span class="text-slate-300">/</span>
+<span class="text-cyan-700 font-semibold">PostgreSQL v15.1</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-slate-900 tracking-tight mt-1">Log Sensor &amp; Integrasi Supabase</h1>
+<p class="font-body-md text-body-md text-slate-600 max-w-2xl mt-1">
+        Pemantauan sinkronisasi kueri realtime, saluran WebSocket CDC (Change Data Capture), dan inspeksi rekaman telemetri node mikrokontroler di lahan pertanian.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-700 font-body-sm text-body-sm px-4 py-2.5 rounded-xl border border-slate-200 transition-all shadow-xs group" id="btn-sync-supabase">
+<span class="material-symbols-outlined text-[18px] text-cyan-600 group-hover:rotate-180 transition-transform duration-500">sync</span>
+<span class="font-medium">Sinkronkan Ulang</span>
+</button>
+<button class="flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-700 font-body-sm text-body-sm px-4 py-2.5 rounded-xl border border-slate-200 transition-all shadow-xs" id="btn-export-csv">
+<span class="material-symbols-outlined text-[18px] text-emerald-700">table_view</span>
+<span class="font-medium">Ekspor CSV</span>
+</button>
+<button class="flex items-center gap-2 bg-emerald-700 text-white font-body-sm text-body-sm px-4 py-2.5 rounded-xl font-semibold transition-all hover:bg-emerald-800 shadow-sm" id="btn-export-json">
+<span class="material-symbols-outlined text-[18px]">data_object</span>
+<span>Ekspor JSON</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-cyan-50 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-slate-500 uppercase font-semibold">Endpoint REST API</span>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Live
+        </span>
+</div>
+<div class="my-space-sm">
+<div class="font-label-numeric-md text-label-numeric-md text-slate-900 font-mono tracking-tight truncate font-semibold">
+          https://ap-iot.supabase.co
+        </div>
+<div class="text-slate-500 font-label-code-sm text-label-code-sm mt-0.5">TLS v1.3 • pgvector enabled</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-slate-600 font-body-sm text-body-sm border-t border-slate-100">
+<span>SSL Pinning</span>
+<span class="font-label-code-sm text-label-code-sm text-cyan-700 font-semibold">SHA-256 Valid</span>
+</div>
+</div>
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-50 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-slate-500 uppercase font-semibold">Target Tabel Supabase</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">table_chart</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md text-slate-900 font-mono font-semibold">sensor_telemetry</span>
+<span class="bg-emerald-100 text-emerald-800 font-label-code-sm text-[10px] px-1.5 py-0.5 rounded font-bold uppercase">Master</span>
+</div>
+<div class="font-label-code-sm text-label-code-sm text-slate-500 mt-0.5">Relasi: <span class="font-mono text-cyan-700 font-medium">pump_logs (FK)</span></div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-slate-600 font-body-sm text-body-sm border-t border-slate-100">
+<span>RLS Security</span>
+<span class="font-label-code-sm text-label-code-sm text-emerald-700 font-semibold">Aktif (Anon Read)</span>
+</div>
+</div>
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-cyan-50 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-slate-500 uppercase font-semibold">Latensi RTT &amp; Kueri</span>
+<span class="material-symbols-outlined text-cyan-600 text-[18px]">speed</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-label-numeric-lg text-label-numeric-lg text-cyan-700 font-bold">24</span>
+<span class="font-label-code-sm text-label-code-sm text-slate-500">ms (p99: 41ms)</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-cyan-600 h-full rounded-full w-[28%]"></div>
+</div>
+</div>
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-50 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-slate-500 uppercase font-semibold">WebSocket Realtime</span>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">
+          Subscribed
+        </span>
+</div>
+<div class="my-space-sm">
+<div class="font-label-numeric-md text-label-numeric-md text-emerald-800 font-mono truncate font-semibold">
+          telemetry_feed
+        </div>
+<div class="text-slate-500 font-label-code-sm text-label-code-sm mt-0.5">Broadcast + Postgres Changes</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-slate-600 font-body-sm text-body-sm border-t border-slate-100">
+<span>Klien Aktif</span>
+<span class="font-label-code-sm text-label-code-sm text-slate-800 font-semibold">12 Session Hub</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<div class="xl:col-span-8 flex flex-col gap-space-md">
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+<input class="w-full bg-slate-50 text-slate-900 font-body-md text-body-md pl-10 pr-4 py-2 rounded-lg placeholder:text-slate-400 focus:outline-none ring-1 ring-slate-300 focus:ring-2 focus:ring-emerald-600 focus:bg-white transition-all" id="input-device-search" placeholder="Cari Device ID (mis. ESP32-NODE-01, NODE-02)..." type="text"/>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<div class="bg-slate-100 p-1 rounded-lg flex items-center gap-1 text-slate-600 font-body-sm text-body-sm border border-slate-200">
+<button class="filter-time-btn px-3 py-1 rounded bg-white text-slate-900 font-medium shadow-xs transition-colors" data-period="today">Hari Ini</button>
+<button class="filter-time-btn px-3 py-1 rounded hover:text-slate-900 transition-colors" data-period="7d">7 Hari</button>
+<button class="filter-time-btn px-3 py-1 rounded hover:text-slate-900 transition-colors" data-period="custom">Kustom</button>
+</div>
+<div class="relative">
+<select class="bg-slate-50 text-slate-800 font-body-sm text-body-sm py-2 pl-3 pr-8 rounded-lg appearance-none cursor-pointer focus:outline-none ring-1 ring-slate-300 focus:ring-2 focus:ring-emerald-600 focus:bg-white transition-all" id="select-param-filter">
+<option value="all">Semua Parameter</option>
+<option value="moisture">Kelembapan Tanah (&lt; 40%)</option>
+<option value="temp">Suhu Udara (&gt; 32°C)</option>
+<option value="humidity">Kelembapan Udara</option>
+<option value="pump">Status Pompa Aktif (ON)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-slate-500 font-label-code-sm text-label-code-sm pt-2 border-t border-slate-100">
+<div class="flex items-center gap-2">
+<span>Menampilkan <strong class="text-slate-900" id="record-count">6</strong> dari <strong class="text-slate-900">1,428</strong> baris telemetri</span>
+<span class="text-slate-300">•</span>
+<span class="text-emerald-700 font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> Aliran Masuk Otomatis</span>
+</div>
+<button class="hover:text-cyan-700 text-slate-600 underline decoration-dotted transition-colors font-medium" id="btn-reset-filters">Reset Filter</button>
+</div>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-slate-50 text-slate-500 font-label-code-sm text-label-code-sm uppercase tracking-wider border-b border-slate-200">
+<tr>
+<th class="py-3.5 px-4 font-semibold">Timestamp (WIB)</th>
+<th class="py-3.5 px-4 font-semibold">Device ID</th>
+<th class="py-3.5 px-4 font-semibold">Tanah (%)</th>
+<th class="py-3.5 px-4 font-semibold">Suhu (°C)</th>
+<th class="py-3.5 px-4 font-semibold">Udara (%RH)</th>
+<th class="py-3.5 px-4 font-semibold">Pompa</th>
+<th class="py-3.5 px-4 font-semibold">Trigger</th>
+<th class="py-3.5 px-4 font-semibold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-800" id="telemetry-table-body">
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-3 px-4 font-mono text-slate-500 text-[12px] whitespace-nowrap">
+                  14:32:08 <span class="text-slate-400 text-[10px]">.114</span>
+</td>
+<td class="py-3 px-4 font-mono font-semibold text-cyan-700 whitespace-nowrap">
+                  ESP32-NODE-01
+                </td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md font-semibold text-emerald-700">34.2%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">28.4°C</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">78.1%</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-code-sm text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> ON
+                  </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-label-code-sm text-[11px] text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded font-medium">Auto-Rule</span>
+</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-raw-btn p-1.5 hover:bg-slate-100 rounded text-slate-500 hover:text-slate-900 transition-colors" data-payload-id="row-1" title="Lihat JSON Raw">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-3 px-4 font-mono text-slate-500 text-[12px] whitespace-nowrap">
+                  14:31:52 <span class="text-slate-400 text-[10px]">.802</span>
+</td>
+<td class="py-3 px-4 font-mono font-semibold text-cyan-700 whitespace-nowrap">
+                  ESP32-NODE-02
+                </td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md font-semibold text-amber-700">31.8%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">29.1°C</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">74.5%</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-code-sm text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> ON
+                  </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-label-code-sm text-[11px] text-cyan-800 bg-cyan-50 border border-cyan-200 px-2 py-0.5 rounded font-medium">Manual</span>
+</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-raw-btn p-1.5 hover:bg-slate-100 rounded text-slate-500 hover:text-slate-900 transition-colors" data-payload-id="row-2" title="Lihat JSON Raw">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-3 px-4 font-mono text-slate-500 text-[12px] whitespace-nowrap">
+                  14:31:30 <span class="text-slate-400 text-[10px]">.009</span>
+</td>
+<td class="py-3 px-4 font-mono font-semibold text-cyan-700 whitespace-nowrap">
+                  ESP32-NODE-01
+                </td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md font-semibold text-slate-800">36.5%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">28.2°C</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">79.0%</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-code-sm text-[10px] bg-slate-100 text-slate-600 border border-slate-200 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> OFF
+                  </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-label-code-sm text-[11px] text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded font-medium">API Edge</span>
+</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-raw-btn p-1.5 hover:bg-slate-100 rounded text-slate-500 hover:text-slate-900 transition-colors" data-payload-id="row-3" title="Lihat JSON Raw">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-3 px-4 font-mono text-slate-500 text-[12px] whitespace-nowrap">
+                  14:30:45 <span class="text-slate-400 text-[10px]">.441</span>
+</td>
+<td class="py-3 px-4 font-mono font-semibold text-cyan-700 whitespace-nowrap">
+                  ESP32-NODE-03
+                </td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md font-semibold text-emerald-700">42.1%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">27.9°C</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">82.3%</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-code-sm text-[10px] bg-slate-100 text-slate-600 border border-slate-200 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> OFF
+                  </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-label-code-sm text-[11px] text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded font-medium">Auto-Rule</span>
+</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-raw-btn p-1.5 hover:bg-slate-100 rounded text-slate-500 hover:text-slate-900 transition-colors" data-payload-id="row-4" title="Lihat JSON Raw">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-3 px-4 font-mono text-slate-500 text-[12px] whitespace-nowrap">
+                  14:30:12 <span class="text-slate-400 text-[10px]">.619</span>
+</td>
+<td class="py-3 px-4 font-mono font-semibold text-cyan-700 whitespace-nowrap">
+                  ESP32-NODE-02
+                </td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md font-semibold text-amber-700">29.4%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">30.3°C</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">69.8%</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-code-sm text-[10px] bg-slate-100 text-slate-600 border border-slate-200 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> OFF
+                  </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-label-code-sm text-[11px] text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded font-medium">Auto-Rule</span>
+</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-raw-btn p-1.5 hover:bg-slate-100 rounded text-slate-500 hover:text-slate-900 transition-colors" data-payload-id="row-5" title="Lihat JSON Raw">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/80 transition-colors group">
+<td class="py-3 px-4 font-mono text-slate-500 text-[12px] whitespace-nowrap">
+                  14:29:40 <span class="text-slate-400 text-[10px]">.901</span>
+</td>
+<td class="py-3 px-4 font-mono font-semibold text-cyan-700 whitespace-nowrap">
+                  ESP32-NODE-01
+                </td>
+<td class="py-3 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="font-label-numeric-md text-label-numeric-md font-semibold text-emerald-700">38.0%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+</div>
+</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">28.0°C</td>
+<td class="py-3 px-4 font-mono text-slate-700 whitespace-nowrap">77.4%</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-code-sm text-[10px] bg-slate-100 text-slate-600 border border-slate-200 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> OFF
+                  </span>
+</td>
+<td class="py-3 px-4 whitespace-nowrap">
+<span class="font-label-code-sm text-[11px] text-cyan-800 bg-cyan-50 border border-cyan-200 px-2 py-0.5 rounded font-medium">Manual</span>
+</td>
+<td class="py-3 px-4 text-right whitespace-nowrap">
+<button class="view-raw-btn p-1.5 hover:bg-slate-100 rounded text-slate-500 hover:text-slate-900 transition-colors" data-payload-id="row-6" title="Lihat JSON Raw">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-md bg-slate-50 border-t border-slate-200 flex items-center justify-between flex-wrap gap-space-sm text-slate-600 font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span>Halaman <strong class="text-slate-900">1</strong> dari <strong class="text-slate-900">119</strong></span>
+<span class="text-slate-300">•</span>
+<select class="bg-white text-slate-800 text-xs py-1 px-2 rounded border border-slate-200 focus:outline-none">
+<option>10 baris / halaman</option>
+<option>25 baris / halaman</option>
+<option>50 baris / halaman</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded bg-white border border-slate-200 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-emerald-700 text-white font-bold text-xs shadow-xs">1</button>
+<button class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs transition-colors">2</button>
+<button class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs transition-colors">3</button>
+<span class="px-1 text-xs text-slate-400">...</span>
+<button class="px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs transition-colors">119</button>
+<button class="p-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-700 text-[20px]">code</span>
+<span class="font-headline-sm text-headline-sm text-slate-900 font-semibold">Inspeksi Raw JSON</span>
+</div>
+<button class="flex items-center gap-1 font-label-code-sm text-label-code-sm text-cyan-700 hover:text-cyan-900 transition-colors font-medium" id="copy-json-btn">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Salin</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-slate-600">
+          Format payload skema PostgreSQL telemetri yang dipancarkan node ESP32 langsung ke Supabase Edge Realtime WebSocket.
+        </p>
+<div class="relative bg-slate-50 border border-slate-200 rounded-xl p-space-md font-mono text-label-code-sm text-label-code-sm overflow-x-auto text-slate-800">
+<pre class="leading-relaxed font-mono" id="raw-json-viewer"><code>{
+  <span class="text-sky-700">"event"</span>: <span class="text-emerald-700">"INSERT"</span>,
+  <span class="text-sky-700">"schema"</span>: <span class="text-amber-700">"public"</span>,
+  <span class="text-sky-700">"table"</span>: <span class="text-amber-700">"sensor_telemetry"</span>,
+  <span class="text-sky-700">"commit_timestamp"</span>: <span class="text-emerald-700">"2025-05-18T07:32:08.114Z"</span>,
+  <span class="text-sky-700">"record"</span>: {
+    <span class="text-sky-700">"id"</span>: <span class="text-slate-900 font-semibold">148293</span>,
+    <span class="text-sky-700">"device_id"</span>: <span class="text-emerald-700">"ESP32-NODE-01"</span>,
+    <span class="text-sky-700">"zone_id"</span>: <span class="text-emerald-700">"ZONE-WEST-BLOCK-A"</span>,
+    <span class="text-sky-700">"soil_moisture"</span>: <span class="text-emerald-700 font-medium">34.20</span>,
+    <span class="text-sky-700">"air_temperature"</span>: <span class="text-amber-700 font-medium">28.4</span>,
+    <span class="text-sky-700">"air_humidity"</span>: <span class="text-sky-700 font-medium">78.1</span>,
+    <span class="text-sky-700">"soil_ec"</span>: <span class="text-slate-900">1.45</span>,
+    <span class="text-sky-700">"pump_state"</span>: <span class="text-emerald-700 font-bold">true</span>,
+    <span class="text-sky-700">"trigger_source"</span>: <span class="text-emerald-700">"auto_threshold_v2"</span>,
+    <span class="text-sky-700">"battery_voltage"</span>: <span class="text-slate-900">3.92</span>,
+    <span class="text-sky-700">"rssi_dbm"</span>: <span class="text-sky-700 font-medium">-68</span>
+  }
+}</code></pre>
+</div>
+<div class="bg-slate-50 border border-slate-200 p-space-sm rounded-lg flex flex-col gap-1 text-[11px] font-mono">
+<div class="flex items-center justify-between text-slate-500">
+<span>Encoding:</span>
+<span class="text-slate-800 font-medium">UTF-8 / JSONB Binary</span>
+</div>
+<div class="flex items-center justify-between text-slate-500">
+<span>Payload Size:</span>
+<span class="text-emerald-700 font-semibold">384 Bytes</span>
+</div>
+<div class="flex items-center justify-between text-slate-500">
+<span>Postgres OID:</span>
+<span class="text-slate-800 font-medium">3829104</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-space-md rounded-xl border border-slate-200 shadow-xs flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-slate-900 font-semibold">Status Node IoT</span>
+<span class="material-symbols-outlined text-emerald-700 text-[20px]">sensors</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+<span class="font-mono text-xs text-slate-900 font-semibold">ESP32-NODE-01</span>
+</div>
+<div class="text-right">
+<span class="font-label-code-sm text-[11px] text-emerald-700 font-semibold">Aktif • 8s lalu</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+<span class="font-mono text-xs text-slate-900 font-semibold">ESP32-NODE-02</span>
+</div>
+<div class="text-right">
+<span class="font-label-code-sm text-[11px] text-emerald-700 font-semibold">Aktif • 24s lalu</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+<span class="font-mono text-xs text-slate-900 font-semibold">ESP32-NODE-03</span>
+</div>
+<div class="text-right">
+<span class="font-label-code-sm text-[11px] text-cyan-700 font-semibold">Idle • 1m lalu</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-6 right-6 bg-white text-slate-900 border-l-4 border-emerald-600 border-y border-r border-slate-200 px-4 py-3 rounded-lg shadow-xl translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center gap-3" id="toast-notification">
+<span class="material-symbols-outlined text-emerald-700 text-[22px]" id="toast-icon">check_circle</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-slate-900" id="toast-title">Notifikasi</span>
+<span class="font-label-code-sm text-label-code-sm text-slate-500" id="toast-desc">Operasi berhasil dilakukan.</span>
+</div>
+</div>
+</div>
+<script>
+  (function () {
+    const rawData = {
+      'row-1': {
+        event: "INSERT",
+        schema: "public",
+        table: "sensor_telemetry",
+        commit_timestamp: "2025-05-18T07:32:08.114Z",
+        record: {
+          id: 148293,
+          device_id: "ESP32-NODE-01",
+          zone_id: "ZONE-WEST-BLOCK-A",
+          soil_moisture: 34.20,
+          air_temperature: 28.4,
+          air_humidity: 78.1,
+          soil_ec: 1.45,
+          pump_state: true,
+          trigger_source: "auto_threshold_v2",
+          battery_voltage: 3.92,
+          rssi_dbm: -68
+        }
+      },
+      'row-2': {
+        event: "INSERT",
+        schema: "public",
+        table: "sensor_telemetry",
+        commit_timestamp: "2025-05-18T07:31:52.802Z",
+        record: {
+          id: 148292,
+          device_id: "ESP32-NODE-02",
+          zone_id: "ZONE-WEST-BLOCK-B",
+          soil_moisture: 31.80,
+          air_temperature: 29.1,
+          air_humidity: 74.5,
+          soil_ec: 1.20,
+          pump_state: true,
+          trigger_source: "manual_override",
+          battery_voltage: 4.10,
+          rssi_dbm: -72
+        }
+      },
+      'row-3': {
+        event: "INSERT",
+        schema: "public",
+        table: "sensor_telemetry",
+        commit_timestamp: "2025-05-18T07:31:30.009Z",
+        record: {
+          id: 148291,
+          device_id: "ESP32-NODE-01",
+          zone_id: "ZONE-WEST-BLOCK-A",
+          soil_moisture: 36.50,
+          air_temperature: 28.2,
+          air_humidity: 79.0,
+          soil_ec: 1.51,
+          pump_state: false,
+          trigger_source: "api_scheduled_sync",
+          battery_voltage: 3.93,
+          rssi_dbm: -67
+        }
+      },
+      'row-4': {
+        event: "INSERT",
+        schema: "public",
+        table: "sensor_telemetry",
+        commit_timestamp: "2025-05-18T07:30:45.441Z",
+        record: {
+          id: 148290,
+          device_id: "ESP32-NODE-03",
+          zone_id: "ZONE-NORTH-NURSERY",
+          soil_moisture: 42.10,
+          air_temperature: 27.9,
+          air_humidity: 82.3,
+          soil_ec: 1.88,
+          pump_state: false,
+          trigger_source: "auto_threshold_v2",
+          battery_voltage: 3.85,
+          rssi_dbm: -61
+        }
+      },
+      'row-5': {
+        event: "INSERT",
+        schema: "public",
+        table: "sensor_telemetry",
+        commit_timestamp: "2025-05-18T07:30:12.619Z",
+        record: {
+          id: 148289,
+          device_id: "ESP32-NODE-02",
+          zone_id: "ZONE-WEST-BLOCK-B",
+          soil_moisture: 29.40,
+          air_temperature: 30.3,
+          air_humidity: 69.8,
+          soil_ec: 1.15,
+          pump_state: false,
+          trigger_source: "auto_threshold_v2",
+          battery_voltage: 4.08,
+          rssi_dbm: -74
+        }
+      },
+      'row-6': {
+        event: "INSERT",
+        schema: "public",
+        table: "sensor_telemetry",
+        commit_timestamp: "2025-05-18T07:29:40.901Z",
+        record: {
+          id: 148288,
+          device_id: "ESP32-NODE-01",
+          zone_id: "ZONE-WEST-BLOCK-A",
+          soil_moisture: 38.00,
+          air_temperature: 28.0,
+          air_humidity: 77.4,
+          soil_ec: 1.48,
+          pump_state: false,
+          trigger_source: "manual_override",
+          battery_voltage: 3.94,
+          rssi_dbm: -68
+        }
+      }
+    };
+
+    const toast = document.getElementById('toast-notification');
+    const toastTitle = document.getElementById('toast-title');
+    const toastDesc = document.getElementById('toast-desc');
+    const rawViewer = document.getElementById('raw-json-viewer');
+
+    function showToast(title, desc) {
+      toastTitle.textContent = title;
+      toastDesc.textContent = desc;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    document.querySelectorAll('.view-raw-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const id = this.getAttribute('data-payload-id');
+        const data = rawData[id];
+        if (data) {
+          rawViewer.innerHTML = '<code>' + syntaxHighlight(data) + '</code>';
+          showToast('Payload Diperbarui', 'Data baris #' + data.record.id + ' ditampilkan pada preview JSON.');
+        }
+      });
+    });
+
+    function syntaxHighlight(jsonObj) {
+      const json = JSON.stringify(jsonObj, undefined, 2);
+      return json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+          let cls = 'text-emerald-700';
+          if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+              cls = 'text-sky-700';
+            } else {
+              cls = 'text-amber-700';
+            }
+          } else if (/true|false/.test(match)) {
+            cls = 'text-emerald-700 font-bold';
+          } else if (/null/.test(match)) {
+            cls = 'text-slate-400';
+          } else {
+            cls = 'text-slate-900 font-medium';
+          }
+          return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    const copyBtn = document.getElementById('copy-json-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const text = rawViewer.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('JSON Disalin', 'Payload telah disalin ke papan klip.');
+        }).catch(() => {
+          showToast('Salin Gagal', 'Izin clipboard ditolak oleh peramban.');
+        });
+      });
+    }
+
+    const btnSync = document.getElementById('btn-sync-supabase');
+    if (btnSync) {
+      btnSync.addEventListener('click', () => {
+        const icon = btnSync.querySelector('.material-symbols-outlined');
+        icon.classList.add('animate-spin');
+        setTimeout(() => {
+          icon.classList.remove('animate-spin');
+          showToast('Sinkronisasi Supabase Sukses', 'Kueri 1,428 baris termutakhir diperbarui dalam 18ms.');
+        }, 800);
+      });
+    }
+
+    const btnCsv = document.getElementById('btn-export-csv');
+    if (btnCsv) {
+      btnCsv.addEventListener('click', () => {
+        showToast('Ekspor CSV Dimulai', 'File telemetry_export_20250518.csv siap diunduh.');
+      });
+    }
+
+    const btnJson = document.getElementById('btn-export-json');
+    if (btnJson) {
+      btnJson.addEventListener('click', () => {
+        showToast('Ekspor JSON Berhasil', 'Snapshot tabel sensor_telemetry (JSON) diunduh.');
+      });
+    }
+
+    const searchInput = document.getElementById('input-device-search');
+    const tableBody = document.getElementById('telemetry-table-body');
+    const recordCount = document.getElementById('record-count');
+
+    if (searchInput && tableBody) {
+      searchInput.addEventListener('input', function (e) {
+        const term = e.target.value.toLowerCase();
+        const rows = tableBody.querySelectorAll('tr');
+        let visible = 0;
+        rows.forEach(row => {
+          const deviceId = row.children[1].textContent.toLowerCase();
+          if (deviceId.includes(term)) {
+            row.style.display = '';
+            visible++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+        if (recordCount) {
+          recordCount.textContent = visible;
+        }
+      });
+    }
+
+    const resetBtn = document.getElementById('btn-reset-filters');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        const rows = tableBody.querySelectorAll('tr');
+        rows.forEach(row => row.style.display = '');
+        if (recordCount) recordCount.textContent = rows.length;
+        const select = document.getElementById('select-param-filter');
+        if (select) select.value = 'all';
+        showToast('Filter Direset', 'Menampilkan seluruh rekaman log telemetri.');
+      });
+    }
+
+    const filterBtns = document.querySelectorAll('.filter-time-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-white', 'text-slate-900', 'font-medium', 'shadow-xs');
+          b.classList.add('text-slate-600');
+        });
+        this.classList.add('bg-white', 'text-slate-900', 'font-medium', 'shadow-xs');
+        this.classList.remove('text-slate-600');
+        showToast('Rentang Waktu Diubah', 'Memuat data rentang: ' + this.innerText);
+      });
+    });
+  })();
+</script></main></div></body></html>
